@@ -31,7 +31,14 @@ app.post("/create/todo", (req, res) => {
 
 
 
-app.put("/update/todo", (req, res) => {});
+app.put("/update/todo", (req, res) => {
+    //const {task, description, deadline, isCompleted,priority}= req.body;
+  const a="sort"
+    todoModel.findOneAndUpdate({task:a},{task:req.body.task} )
+    .then(result=>{ res.json(result)}).catch(err=>{res.send(err)})
+});
+
+
 app.delete("/delete/todo", (req, res) => {});
 
 const port = 3000;
