@@ -33,9 +33,12 @@ app.post("/create/todo", (req, res) => {
 
 app.put("/update/todo", (req, res) => {
     //const {task, description, deadline, isCompleted,priority}= req.body;
-  const a="sort"
-    todoModel.findOneAndUpdate({task:a},{task:req.body.task} )
-    .then(result=>{ res.json(result)}).catch(err=>{res.send(err)})
+ 
+ console.log(req.body.task);
+ const query = {task:"roaa"};
+ todoModel.findOneAndUpdate(query,{task:req.body.task}
+    )
+ .then(result=>{ res.json(result)}).catch(err=>{res.send(err)})
 });
 
 
