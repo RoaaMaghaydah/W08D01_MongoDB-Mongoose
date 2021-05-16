@@ -5,7 +5,21 @@ const db = require("./db");
 const app = express();
 app.use(express.json());
 
-app.get("/todos", (req, res) => {});
+app.get("/todos", (req, res) => {
+    todoModel.find({})
+  .then((result)=>{
+    res.json(result);
+  }).catch((err)=>{res.json(err)})
+
+});
+
+app.get("/todos/complete",(req,res)=>{
+    todoModel.find({isCompleted:true})
+    .then((result)=>{
+      res.json(result);
+    }).catch((err)=>{res.json(err)})
+})
+
 app.post("/create/todo", (req, res) => {
     const {task, description, deadline, isCompleted,priority}= req.body;
 
@@ -14,6 +28,9 @@ app.post("/create/todo", (req, res) => {
     )
     todos.save().then(result=>{ res.json(result)}).catch(err=>{res.send(err)})
 });
+
+
+
 app.put("/update/todo", (req, res) => {});
 app.delete("/delete/todo", (req, res) => {});
 
