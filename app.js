@@ -32,15 +32,16 @@ app.post("/create/todo", (req, res) => {
 
 
 app.put("/update/todo", (req, res) => {
-    const query = { task: "roaamagaydah" };
-    todoModel.findOneAndUpdate(query, { task, description, deadline, isCompleted, priority } = req.body
+    const query = { task: "run 24" };
+    todoModel.findOneAndUpdate(query, { task, description, deadline, isCompleted, priority } = req.body, { new: true }
     )
         .then(result => { res.json(result) }).catch(err => { res.send(err) })
+
 });
 
 
 app.delete("/delete/todo", (req, res) => {
-    const query = { task: "sport_1" };
+    const query = { priority: "8" };
     todoModel.deleteOne(query)
         .then(result => { res.json("done") }).catch(err => { res.send(err) })
 
