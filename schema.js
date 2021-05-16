@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-    task:{},
-    description:{ },
-     deadline:{},
-    isCompleted:{},
-    priority:{}
+const todoSchema = new mongoose.Schema({
+    task:{type:String},
+    description:{type:String},
+    deadline:{type:Date},
+    isCompleted:{type:Boolean},
+    priority:{type:String}
 })
+
+module.exports = mongoose.model("toDo",todoSchema)
